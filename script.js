@@ -1,17 +1,10 @@
-// Using the Shopping List files from the previous videos update the shopping list app
-// to do the following:
-
-// 1. If you click on the list item, it toggles the .done  class on and off.
-
-// 2. Add buttons next to each list item to delete the item when clicked on its
-// corresponding delete button.
-
-// 3. BONUS: When adding a new list item, it automatically adds the delete button
-// next to it (hint: be sure to check if new items are clickable too!)
-
-var button = document.getElementById("enter");
+var addButton = document.getElementById("enter");
 var input = document.getElementById("userinput");
 var ul = document.querySelector("ul");
+
+window.onload = function() {
+	input.focus();
+}
 
 function inputLength() {
 	return input.value.length;
@@ -19,14 +12,14 @@ function inputLength() {
 
 function createListElement() {
 	var li = document.createElement("li");
-	var button = document.createElement("button");
-	button.appendChild(document.createTextNode("Delete"));
+	var deleteButton = document.createElement("button");
+	deleteButton.appendChild(document.createTextNode("Delete"));
 	li.appendChild(document.createTextNode(input.value));
-	li.appendChild(button);
+	li.appendChild(deleteButton);
 	ul.appendChild(li);
 
-
 	input.value = "";
+	input.focus();
 }
 
 function addListAfterClick() {
@@ -42,7 +35,7 @@ function addListAfterKeypress(event) {
 }
 
 function toggleDone(listItem) {
-	if (listItem.target.tagName !== "BUTTON") {
+	if (listItem.target.tagName === "SPAN") {
 		listItem.target.classList.toggle("done");
 	}
 }
@@ -53,7 +46,7 @@ function deleteItem(listItem) {
 	}
 }
 
-button.addEventListener("click", addListAfterClick);
+addButton.addEventListener("click", addListAfterClick);
 
 input.addEventListener("keypress", addListAfterKeypress);
 
