@@ -3,37 +3,35 @@
 <head>
 	<title>Javascript + DOM</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<!-- Google Icons library -->
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100" rel="stylesheet" />
 </head>
 <body>
-	<h1>Shopping List</h1>
-	<input id="userinput" type="text" placeholder="enter items">
-	<button id="enter">Enter</button>
-	<ul>
-		<li>
-			<span>Notebook</span>
-			<button class="delete-button" id="test">Delete</button>
-		</li>
-		<li>
-			<span>Jello</span>
-			<button class="delete-button">Delete</button>
-		</li>
-		<li>
-			<span>Spinach</span>
-			<button class="delete-button">Delete</button>
-		</li>
-		<li>
-			<span>Rice</span>
-			<button class="delete-button">Delete</button>
-		</li>
-		<li>
-			<span>Birthday cake</span>
-			<button class="delete-button">Delete</button>
-		</li>
-		<li>
-			<span>Candles</span>
-			<button class="delete-button">Delete</button>
-		</li>
-	</ul>
+	<header>
+		<h1>Shopping List</h1>
+	</header>
+	<main>
+		<div class= "enter-section">
+			<input id="userinput" type="text" placeholder="enter items">
+			<button id="enter">Enter</button>
+		</div>
+		<ul>
+			<li>
+				<span class="checkbox material-symbols-outlined">check_box_outline_blank</span>
+				<span class="list-text">Notebook</span>
+				<button class="delete-button material-symbols-outlined">delete</button>
+			</li>
+			<li>
+				<span class="checkbox material-symbols-outlined">check_box_outline_blank</span>
+				<span class="list-text">Jello</span>
+				<button class="delete-button material-symbols-outlined">delete</button>
+			</li>
+		</ul>
+	</main>
+	<footer>
+		<p>Author: catonthewall</p>
+	</footer>
 	<script type="text/javascript" src="script.js"></script>
 </body>
 </html>
