@@ -1,6 +1,7 @@
 let addButton = document.getElementById("enter");
 let input = document.getElementById("userinput");
 let ul = document.querySelector("ul");
+let editableItems = document.querySelectorAll(".editable");
 
 window.onload = function() {
 	input.focus();
@@ -21,7 +22,9 @@ function createListElement() {
 		
 	let spanText = document.createElement("span");
 	spanText.appendChild(document.createTextNode(input.value));
+	spanText.classList.add("editable");
 	spanText.classList.add("list-text");
+	spanText.contentEditable="true";
 	
 	let deleteButton = document.createElement("button");
 	deleteButton.appendChild(document.createTextNode("delete"));
@@ -32,6 +35,8 @@ function createListElement() {
 	li.appendChild(spanText);
 	li.appendChild(deleteButton);
 	ul.appendChild(li);
+
+	spanText.addEventListener('keypress', finishEditOnEnter);
 
 	// reset input field
 	input.value = "";
@@ -50,11 +55,10 @@ function addListAfterKeypress(event) {
 	}
 }
 
-function toggleDone(listItem) {
-	if (listItem.target.classList.contains("checkbox")) {
-		listItem.target.firstChild.nodeValue = toggleCheckmark(listItem.target.firstChild.nodeValue);
-		listItem.target.nextElementSibling.classList.toggle("done");
-
+function toggleDone(e) {
+	if (e.target.classList.contains("checkbox")) {
+		e.target.firstChild.nodeValue = toggleCheckmark(e.target.firstChild.nodeValue);
+		e.target.nextElementSibling.classList.toggle("done");
 	}
 }
 
@@ -66,12 +70,20 @@ function toggleCheckmark(checkmark) {
 	}
 }
 
-function deleteItem(listItem) {
-	if (listItem.target.classList.contains("delete-button")) {
-		listItem.target.parentElement.remove();
+function deleteItem(e) {
+	if (e.target.classList.contains("delete-button")) {
+		e.target.parentElement.remove();
 	}
 }
 
+function finishEditOnEnter(e) {
+	if (e.key === "Enter") {
+        e.preventDefault();
+        input.focus();
+    }
+}
+
+// item events
 addButton.addEventListener("click", addListAfterClick);
 
 input.addEventListener("keypress", addListAfterKeypress);
@@ -79,3 +91,14 @@ input.addEventListener("keypress", addListAfterKeypress);
 ul.addEventListener("click", toggleDone);
 
 ul.addEventListener("click", deleteItem);
+
+editableItems.forEach(editableItem =>
+	editableItem.addEventListener('keypress', finishEditOnEnter)
+);
+
+
+
+// page events
+// window.addEventListener('beforeunload', function (e) {
+// 	return e.preventDefault();
+// });

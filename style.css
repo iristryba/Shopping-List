@@ -6,8 +6,17 @@ body {
   font-family: sans-serif;
 }
 
+ul {
+  
+}
+
 li {
   display: flex;
+  align-items: center;
+}
+
+.delete-button {
+  margin-left:  auto;
 }
 
 .done {
