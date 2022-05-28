@@ -1,24 +1,3 @@
-body {
-  display:  flex;
-  flex-flow:  column nowrap;
-  align-items: center;
-
-  font-family: sans-serif;
-}
-
-ul {
-  
-}
-
-li {
-  display: flex;
-  align-items: center;
-}
-
-.delete-button {
-  margin-left:  auto;
-}
-
-.done {
+/* .done {
   text-decoration: line-through;
-}
+} */

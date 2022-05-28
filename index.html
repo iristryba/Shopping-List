@@ -1,36 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Javascript + DOM</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-
+	<title>List Galore</title>
+	
 	<!-- Google Icons library -->
 	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100" rel="stylesheet" />
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-	<header>
-		<h1 contenteditable="true" class="editable">Shopping List</h1>
+<body class="flex flex-col items-center bg-slate-800 text-slate-50">
+	<header class="sticky">
+		<h1 contenteditable="true" class="editable text-4xl py-8 text-slate-50 text-center">Shopping List</h1>
 	</header>
-	<main>
-		<div class= "enter-section">
-			<input id="userinput" type="text" placeholder="enter items">
-			<button id="enter">Enter</button>
-		</div>
-		<ul>
-			<li>
-				<span class="checkbox material-symbols-outlined">check_box_outline_blank</span>
-				<span contenteditable="true" class="editable list-text">Notebook</span>
-				<button class="delete-button material-symbols-outlined">delete</button>
+	<main class="flex flex-col border-solid border-t-2">
+		<ul id="active-list" class="flex flex-col gap-2 p-8">
+			<li class="flex flex-row p-1.5 gap-1 items-center border-2 border-slate-700 border-solid rounded group hover:bg-sky-700">
+				<span class="checkbox material-symbols-outlined hover:cursor-pointer">check_box_outline_blank</span>
+				<span contenteditable="true" class="editable list-text hover:cursor-text">Notebook</span>
+				<button class="delete-button material-symbols-outlined ml-auto invisible group-hover:visible hover:cursor-pointer">delete</button>
+				<hr>
 			</li>
-			<li>
-				<span class="checkbox material-symbols-outlined">check_box_outline_blank</span>
-				<span contenteditable="true" class="editable list-text">Jello</span>
-				<button class="delete-button material-symbols-outlined">delete</button>
+			<li class="flex flex-row p-1.5 gap-1 items-center border-2 border-slate-700 border-solid rounded group hover:bg-sky-700">
+				<span class="checkbox material-symbols-outlined hover:cursor-pointer">check_box_outline_blank</span>
+				<span contenteditable="true" class="editable list-text hover:cursor-text">Jello</span>
+				<button class="delete-button material-symbols-outlined ml-auto invisible group-hover:visible hover:cursor-pointer">delete</button>
+			</li>
+			<li id="input-list-item" class="flex flex-row p-1.5 gap-1 items-center">
+				<span class="material-symbols-outlined hover:cursor-pointer">check_box_outline_blank</span>
+				<input id="userinput" type="text" placeholder="enter an item" class="bg-slate-700 hover:cursor-text pl-1.5 mr-2 rounded">
+			</li>
+		</ul>
+
+		<hr>
+
+		<ul id="inactive-list" class="flex flex-col gap-2 p-8 text-slate-500">
+			<li class="flex flex-row p-1.5 gap-1 items-center border-2 border-slate-700 border-solid rounded group hover:bg-sky-700 hover:text-slate-50">
+				<span class="checkbox material-symbols-outlined hover:cursor-pointer">select_check_box</span>
+				<span contenteditable="true" class="editable list-text line-through hover:cursor-text">Popsicle</span>
+				<button class="delete-button material-symbols-outlined ml-auto invisible group-hover:visible hover:cursor-pointer">delete</button>
+			</li>
+			<li class="flex flex-row p-1.5 gap-1 items-center border-2 border-slate-700 border-solid rounded group hover:bg-sky-700 hover:text-slate-50">
+				<span class="checkbox material-symbols-outlined hover:cursor-pointer">select_check_box</span>
+				<span contenteditable="true" class="editable list-text line-through hover:cursor-text">Cake</span>
+				<button class="delete-button material-symbols-outlined ml-auto invisible group-hover:visible hover:cursor-pointer">delete</button>
 			</li>
 		</ul>
 	</main>
 	<footer>
-		<p>Author: catonthewall</p>
+		<p class="text-cyan-800">Author: catonthewall</p>
 	</footer>
 	<script type="text/javascript" src="script.js"></script>
 </body>
